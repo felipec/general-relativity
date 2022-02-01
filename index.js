@@ -13,11 +13,11 @@ Array.prototype.sumf = function(f) {
 }
 
 function mul(a, b) {
-  if (a[0].length != b.length) throw 'Bad size';
-  const c = a.map(_ => new Array());
-  for (let i = 0; i < a.length; i++) {
-    for (let j = 0; j < b[0].length; j++) {
-      c[i][j] = b.sumf((bk, k) => a[i][k] * bk[j]);
+  if (b[0].length != a.length) throw 'Bad size';
+  const c = b.map(_ => new Array());
+  for (let i = 0; i < b.length; i++) {
+    for (let j = 0; j < a[0].length; j++) {
+      c[i][j] = a.sumf((ak, k) => b[i][k] * ak[j]);
     }
   }
   return c;
@@ -109,9 +109,9 @@ function redraw() {
     [0 - (0 - trans[1][0]) * progress, 1 - (1 - trans[1][1]) * progress],
   ];
 
-  const b_a = mul(basis_a, p_trans);
-  const b_b = mul(basis_b, p_trans);
-  const v = mul(vector, p_trans);
+  const b_a = mul(p_trans, basis_a);
+  const b_b = mul(p_trans, basis_b);
+  const v = mul(p_trans, vector);
 
   draw_grid(b_a[0], b_a[1], 'hsl(210, 75%, 75%, 50%)', 'hsl(210, 100%, 90%, 75%)');
   draw_grid(b_b[0], b_b[1], 'hsl(330, 75%, 75%, 50%)');
