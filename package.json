@@ -1,0 +1,11 @@
+{
+  "name": "general-relativity",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "test": "qunit"
+  },
+  "devDependencies": {
+    "qunit": "2.x"
+  }
+}
