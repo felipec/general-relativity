@@ -128,11 +128,17 @@ function redraw() {
 }
 
 function resize_canvas() {
-  canvas.width = document.body.offsetWidth;
-  canvas.height = document.body.offsetHeight;
+  const width = document.body.offsetWidth;
+  const height = document.body.offsetHeight;
+  const pr = window.devicePixelRatio;
+
+  size = Math.max(width, height);
+
+  canvas.width = width * pr;
+  canvas.height = height * pr;
+
   ctx.translate(canvas.width / 2, canvas.height / 2);
-  ctx.scale(1, -1);
-  size = Math.max(canvas.width, canvas.height);
+  ctx.scale(pr, -pr);
   redraw();
 }
 
