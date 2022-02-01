@@ -130,9 +130,12 @@ function redraw() {
 function resize_canvas() {
   const width = document.body.offsetWidth;
   const height = document.body.offsetHeight;
-  const pr = window.devicePixelRatio;
+  let pr = window.devicePixelRatio;
 
   size = Math.max(width, height);
+
+  if (pr > 1)
+    pr = Math.floor(((1024 * 4) * Math.min((size * pr) / (1024 * 4), 1)) / size);
 
   canvas.width = width * pr;
   canvas.height = height * pr;
