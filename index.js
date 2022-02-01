@@ -128,8 +128,8 @@ function redraw() {
 }
 
 function resize_canvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+  canvas.width = document.body.offsetWidth;
+  canvas.height = document.body.offsetHeight;
   ctx.translate(canvas.width / 2, canvas.height / 2);
   ctx.scale(1, -1);
   size = Math.max(canvas.width, canvas.height);
