@@ -1,8 +1,6 @@
 const ctx = canvas.getContext('2d');
 
-var size;
-
-const scale = 100;
+var size, scale;
 
 const basis_a = [ [1, 0], [0, 1] ];
 const basis_b = [ [1, 2], [-0.5, 0.25] ];
@@ -142,6 +140,7 @@ function resize_canvas() {
 
   ctx.translate(canvas.width / 2, canvas.height / 2);
   ctx.scale(pr, -pr);
+  scale = size / 16;
   redraw();
 }
 
